@@ -17,6 +17,18 @@ Region.delete_all
 PokemonLocation.delete_all
 PokemonItem.delete_all
 
+move_url = "https://pokeapi.co/api/v2/move/?limit=746"
+move_uri = URI(move_url)
+move_response = Net::HTTP.get(move_uri)
+move_parsed = JSON.parse(move_response)
+move_parsed['results'].each do |move|
+  move_type_url = move['url']
+  move_type_uri = URI(move_type_url)
+  move_type_response = Net::HTTP.get(move_type_uri)
+  move_type_parsed = JSON.parse(move_type_response)
+  Move.create(name: move['name'], url: move['url'], typing: move_type_parsed['type']['name'])
+end
+
 fact1 = Fact.create(description: "Did you know that in Pokemon Ruby and Sapphire, there were only 6 tiles in a pond to catch a Feebas?")
 fact2 = Fact.create(description: "Did you know that the three dogs in Gold, Silver, and Crystal are notorious to catch for their ability to escape?")
 

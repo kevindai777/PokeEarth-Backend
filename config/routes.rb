@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/pokemon_locations/kanto", to: "pokemon_locations#kanto"
+  get "/pokemon_locations/johto", to: "pokemon_locations#johto"
+  get "/pokemon_locations/hoenn", to: "pokemon_locations#hoenn"
+  get "/pokemon_locations/sinnoh", to: "pokemon_locations#sinnoh"
+  get "/pokemon_locations/unova", to: "pokemon_locations#unova"
+  get "/pokemon_locations/kalos", to: "pokemon_locations#kalos"
+
   resources :facts
   resources :pokemons
   resources :locations
@@ -7,4 +14,13 @@ Rails.application.routes.draw do
   resources :regions
   resources :pokemon_locations
   resources :pokemon_items
+  resources :users
+  resources :favorite_locations
+  resources :favorite_items
+  resources :moves
+
+  get "/auto_login", to: "auth#auto_login"
+  post "/signup", to: "users#create"
+  post "/login", to: "auth#login"
+
 end

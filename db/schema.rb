@@ -10,12 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_194651) do
+ActiveRecord::Schema.define(version: 2019_08_15_140529) do
 
   create_table "facts", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_favorite_items_on_item_id"
+    t.index ["user_id"], name: "index_favorite_items_on_user_id"
+  end
+
+  create_table "favorite_locations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_favorite_locations_on_location_id"
+    t.index ["user_id"], name: "index_favorite_locations_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -32,6 +50,14 @@ ActiveRecord::Schema.define(version: 2019_08_07_194651) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["region_id"], name: "index_locations_on_region_id"
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "typing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pokemon_items", force: :cascade do |t|
@@ -62,6 +88,13 @@ ActiveRecord::Schema.define(version: 2019_08_07_194651) do
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
