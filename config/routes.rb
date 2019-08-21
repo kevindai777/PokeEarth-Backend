@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :favorite_locations
   resources :favorite_items
   resources :moves
+  resources :favorite_pokemons
+  resources :types
 
   get "/auto_login", to: "auth#auto_login"
   post "/signup", to: "users#create"

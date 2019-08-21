@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_140529) do
+ActiveRecord::Schema.define(version: 2019_08_21_180617) do
 
   create_table "facts", force: :cascade do |t|
     t.string "description"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2019_08_15_140529) do
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_favorite_locations_on_location_id"
     t.index ["user_id"], name: "index_favorite_locations_on_user_id"
+  end
+
+  create_table "favorite_pokemons", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "pokemon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pokemon_id"], name: "index_favorite_pokemons_on_pokemon_id"
+    t.index ["user_id"], name: "index_favorite_pokemons_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -88,6 +97,17 @@ ActiveRecord::Schema.define(version: 2019_08_15_140529) do
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.string "weak_to", default: "--- []\n"
+    t.string "immune_to", default: "--- []\n"
+    t.string "resists", default: "--- []\n"
+    t.string "weak_against", default: "--- []\n"
+    t.string "strong_against", default: "--- []\n"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
