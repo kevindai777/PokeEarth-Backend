@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   get "/pokemon_locations/unova", to: "pokemon_locations#unova"
   get "/pokemon_locations/kalos", to: "pokemon_locations#kalos"
 
+  get "/pokemons/kanto", to: "pokemons#kanto"
+  get "/pokemons/johto", to: "pokemons#johto"
+  get "/pokemons/hoenn", to: "pokemons#hoenn"
+  get "/pokemons/sinnoh", to: "pokemons#sinnoh"
+  get "/pokemons/unova", to: "pokemons#unova"
+  get "/pokemons/kalos", to: "pokemons#kalos"
+  get "/pokemons/alola", to: "pokemons#alola"
+
   resources :facts
   resources :pokemons
   resources :locations
