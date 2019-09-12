@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'net/http'
-require 'JSON'
+require 'json'
 require 'byebug'
 
 Type.create(name: 'fire', weak_to: ['ground', 'rock', 'water'], immune_to: [], resists: ['bug','fairy','fire','grass','ice','steel'], weak_against: ['dragon','fire','rock','water'], strong_against: ['bug','grass','ice','steel'])
