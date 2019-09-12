@@ -15,6 +15,11 @@ class FavoritePokemonsController < ApplicationController
     render json: favorite_pokemon
   end
 
+  def destroy
+    favorite_pokemon = FavoritePokemon.find(params[:id])
+    favorite_pokemon.delete
+  end
+
   def favorite_pokemon_params
     params.require(:favorite_pokemon).permit(:user_id, :pokemon_id)
   end
